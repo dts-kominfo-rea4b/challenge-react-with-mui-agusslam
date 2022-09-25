@@ -1,8 +1,13 @@
 // Terima props lalu tampilkan dalam Contact component
 // Contact component dapat berupa MUI ListItem
 // https://mui.com/material-ui/react-list/#folder-list
-import { Avatar, List, ListItem, ListItemAvatar, ListItemText, Divider, Box } from '@mui/material';
 import React from 'react';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemText from '@mui/material/ListItemText';
+import ListItemAvatar from '@mui/material/ListItemAvatar';
+import Avatar from '@mui/material/Avatar';
+import { Divider } from '@mui/material';
 
 
 // Kalian bisa membuat CSS sendiri di src/components/Contact.css
@@ -10,37 +15,24 @@ import React from 'react';
 const Contact = ({ data }) => {
     // Contact berisi foto, nama, telepon, dan email
     return (
-        <Box sx={{
-            width: 600,
-            height: "100%",
-            backgroundColor: '#dbf6f0',                    
-        }}>
-
-            {
-                data.map((contacts, index) => {
-                    return (
-                        <List key={index}>
-                            <ListItem alignItems='flex-center'>
-                                <ListItemAvatar>
-                                    <Avatar alt="avatar" src={contacts.photo} />
-                                </ListItemAvatar>
-                                <ListItemText
-                                    primary={contacts.name}
-                                    secondary={
-                                        <React.Fragment>
-                                            {contacts.phone}<br />
-                                            {contacts.email}
-                                        </React.Fragment>}
-                                />
-                            </ListItem>
-                            <Divider variant="inset" component="li" />
-                        </List>
-                    )
-                })
-            }
-
-
-        </Box>
+        <List sx={{ width: '100%', maxWidth: 600, bgcolor: '#dbf6f0' }}>
+            <ListItem sx={{paddingBottom:2}}>
+                <ListItemAvatar>
+                    <Avatar alt="img" src={data.photo} sx={{width:80, height:80}} />
+                </ListItemAvatar>
+                <ListItemText
+                    sx={{paddingLeft:5}}
+                    primary={data.name}
+                    secondary={
+                        <React.Fragment>
+                            {data.phone}<br />
+                            {data.email}
+                        </React.Fragment>
+                    }
+                />
+            </ListItem>
+            <Divider component="li" variant="middle" />            
+        </List>
     );
 };
 

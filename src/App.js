@@ -28,13 +28,20 @@ const App = () => {
         justify="center"
         sx={{
           marginTop: "50px",
+          marginBottom: 10,
         }}>
-        <Grid 
-        item lg={6} 
-        sx={{ 
-          paddingLeft:"8%"
+        <Grid
+          item lg={6}
+          sx={{
+            paddingLeft: "8%"
           }}><ContactForm handleClick={handleClick} /></Grid>
-        <Grid item lg={6}><Contact data={daftar} /></Grid>
+        <Grid item lg={6}>
+          {daftar.map((contact, index) => {
+            return (
+              <Contact data={contact} index={index} />
+            )
+          })}
+        </Grid>
       </Grid>
     </div>
   );
