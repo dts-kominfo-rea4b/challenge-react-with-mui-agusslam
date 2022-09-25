@@ -17,19 +17,19 @@ const Contact = ({ data }) => {
         }}>
 
             {
-                data.map((hasil, index) => {
+                data.map((contacts, index) => {
                     return (
                         <List key={index}>
                             <ListItem alignItems='flex-center'>
                                 <ListItemAvatar>
-                                    <Avatar alt="avatar" src='https://placekitten.com/300/300' />
+                                    <Avatar alt="avatar" src={contacts.photo} />
                                 </ListItemAvatar>
                                 <ListItemText
-                                    primary={hasil.name}
+                                    primary={contacts.name}
                                     secondary={
                                         <React.Fragment>
-                                            {hasil.phone}<br />
-                                            {hasil.email}
+                                            {contacts.phone}<br />
+                                            {contacts.email}
                                         </React.Fragment>}
                                 />
                             </ListItem>
